@@ -1,0 +1,27 @@
+{
+  "name": "lokkol/cofeebreaks",
+  "description": "A web-application for chatting",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "LokKol17",
+      "email": "lokkol17@proton.me"
+    },
+    {
+      "name": "Cofee",
+      "email": "adanpaolpereiradealmeida@gmail.com"
+    }
+  ],
+  "require": {
+    "doctrine/orm": "^2.11.0",
+    "doctrine/dbal": "^3.2",
+    "symfony/yaml": "^5.4",
+    "symfony/cache": "^5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Lok\\CofeeBreaks\\": "src"
+    }
+  }
+}
