@@ -30,7 +30,8 @@ class UsuariosRepository
      */
     public function adicionarUsuario(): void
     {
-        $this->connection->persist($this->usuario);
+        $usuario = $this->verificarEmail($this->usuario);
+        $this->connection->persist($usuario);
         $this->connection->flush();
     }
 
@@ -47,5 +48,16 @@ class UsuariosRepository
             throw new InvalidArgumentException("Usuario ou Senha INCORRETOS");
         }
         echo "Bem-vindo {$repository->getUsername()}!";
+    }
+
+    public function verificarEmail(Usuario $usuario): Usuario
+    {
+        $stmt = $this->connection;
+        $email = $usuario->getEmail();
+        if($stmt->getRepository(Usuario::class)->findOneBy(['email' => $email])) {
+            throw new InvalidArgumentException("Esse email já foi registrado");
+        }
+
+        return $usuario;
     }
 }
