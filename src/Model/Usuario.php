@@ -46,6 +46,10 @@ class Usuario
         return $this->email;
     }
 
+    public function getPasswordHash(): string
+    {
+        return $this->password;
+    }
     /////////////////////////////////////////////
 
 }
