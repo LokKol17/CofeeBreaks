@@ -3,7 +3,7 @@
 namespace Lok\CofeeBreaks\Repository\UsuariosRepositoryMethods;
 
 use InvalidArgumentException;
-use Lok\CofeeBreaks\Model\Usuario;
+use Lok\CofeeBreaks\Model\Entity\Usuario;
 
 trait AutenticarUsuario
 {

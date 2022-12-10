@@ -3,9 +3,9 @@
 namespace Lok\CofeeBreaks\Helper;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\ORMSetup;
-use stdClass;
 
 class EntityManagerCreator
 {
@@ -13,7 +13,7 @@ class EntityManagerCreator
     /**
      * @throws ORMException
      */
-    public static function createEntityManager(): EntityManager
+    public function getEntityManager(): EntityManagerInterface
     {
         include_once 'objectToArray.php';
 
@@ -21,7 +21,10 @@ class EntityManagerCreator
         $content = json_decode($file);
         $content = object_to_array($content);
 
-        $config = ORMSetup::createAttributeMetadataConfiguration(array(__DIR__. "/.."), true);
+        $config = ORMSetup::createAttributeMetadataConfiguration(
+            array(__DIR__. "/../Model/Entity"),
+            true);
+
         $conn = array(
             'dbname' => $content['dbname'],
             'user' => $content['user'],
@@ -30,9 +33,7 @@ class EntityManagerCreator
             'driver' => $content['driver'],
         );
 
-        return $entityManager = EntityManager::create($conn, $config);
+        return EntityManager::create($conn, $config);
     }
-
-
 
 }

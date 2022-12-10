@@ -5,10 +5,8 @@ namespace Lok\CofeeBreaks\Repository;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Exception\ORMException;
-use Doctrine\ORM\OptimisticLockException;
-use InvalidArgumentException;
 use Lok\CofeeBreaks\Helper\EntityManagerCreator;
-use Lok\CofeeBreaks\Model\Usuario;
+use Lok\CofeeBreaks\Model\Entity\Usuario;
 use Lok\CofeeBreaks\Repository\UsuariosRepositoryMethods\AdicionarUsuario;
 use Lok\CofeeBreaks\Repository\UsuariosRepositoryMethods\AutenticarUsuario;
 use Lok\CofeeBreaks\Repository\UsuariosRepositoryMethods\VerificarEmail;
@@ -23,7 +21,7 @@ class UsuariosRepository
      */
     public function __construct(?Usuario $usuario)
     {
-        $this->connection = EntityManagerCreator::createEntityManager();
+        $this->connection = (new EntityManagerCreator())->getEntityManager();
         $this->usuario = $usuario;
     }
 

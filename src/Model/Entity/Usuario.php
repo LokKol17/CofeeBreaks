@@ -1,6 +1,6 @@
 <?php
 
-namespace Lok\CofeeBreaks\Model;
+namespace Lok\CofeeBreaks\Model\Entity;
 
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
